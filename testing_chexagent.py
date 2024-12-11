@@ -20,7 +20,7 @@ images = [Image.open(image_path).convert("RGB")]
 print(f'type:{type(images)}')
 
 # step 4: Generate the Findings section
-prompt = f'Describe "Airway"'
+prompt = f'Describe "Tumor"'
 inputs = processor(images=images, text=f" USER: <s>{prompt} ASSISTANT: <s>", return_tensors="pt").to(device=device, dtype=dtype)
 output = model.generate(**inputs, generation_config=generation_config)[0]
 response = processor.tokenizer.decode(output, skip_special_tokens=True)

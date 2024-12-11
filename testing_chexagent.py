@@ -13,7 +13,7 @@ dtype = torch.float16
 processor = AutoProcessor.from_pretrained("StanfordAIMI/CheXagent-8b", trust_remote_code=True)
 generation_config = GenerationConfig.from_pretrained("StanfordAIMI/CheXagent-8b")
 model = AutoModelForCausalLM.from_pretrained("StanfordAIMI/CheXagent-8b", torch_dtype=dtype, trust_remote_code=True)
-
+model.to(device)
 # step 3: Fetch the images
 image_path = "pleural_effusion.jpg"
 images = [Image.open(image_path).convert("RGB")]
